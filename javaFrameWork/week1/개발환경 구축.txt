@@ -1,0 +1,8 @@
+개발환경 구축
+
+오픈JDK 다운로드 (11버전)
+https://adoptium.net/
+
+
+인텔리제이(얼티메이트)다운로드
+https://www.jetbrains.com/ko-kr/idea/
