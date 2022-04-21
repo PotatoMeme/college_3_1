@@ -1,14 +1,12 @@
 package iducs.springboot.bootjpa.controller;
 
 import iducs.springboot.bootjpa.domain.Memo;
-import iducs.springboot.bootjpa.entity.MemoEntity;
 import iducs.springboot.bootjpa.service.MemoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
@@ -16,8 +14,7 @@ import java.util.Optional;
 public class MemoController {
     // MemoService 인터페이스로 부터 구현가능한 객체를 생성해서 주입
     // Spring Bean 객체로 구현하였기 때문에 Spring이 주입할 수 있음
-    final
-    MemoService memoService; // 참조변수명 memoService
+    final MemoService memoService; // 참조변수명 memoService
 
     public MemoController(MemoService memoService) {
         this.memoService = memoService;
