@@ -11,7 +11,6 @@ public interface MemberService {
     List<Member> readAll();
     void update(Member member);
     void delete(Member member);
-
     Member readByName(Member member);
     Member readByEmail(String email);
 

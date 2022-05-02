@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>member</title>
+</head>
+<body>
+<h1> Table in member </h1>
+<table border="1" width="50%" height="50px">
+    <tr>
+        <td>seq</td>
+        <td>id</td>
+        <td>name</td>
+        <td>email</td>
+        <td>address</td>
+        <td>phone</td>
+        <td>pw</td>
+    </tr>
+    <tr>
+        <td><span th:text="${member.seq}"></span></a></td>
+        <td><span th:text="${member.id}"></span></td>
+        <td><span th:text="${member.name}"></span></td>
+        <td><span th:text="${member.email}"></span></td>
+        <td><span th:text="${member.address}"></span></td>
+        <td><span th:text="${member.phone}"></span></td>
+        <td><span th:text="${member.pw}"></span></td>
+
+    </tr>
+</table>
+
+<a th:href="@{'/members/'+${member.seq}+'/upform'}"> update </a>
+<a th:href="@{'/members/'+${member.seq}+'/delform'}"> delete </a>
+<a th:href="@{'/members'}"> list </a>
+
+
+
+</body>
+</html>

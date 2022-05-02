@@ -7,15 +7,15 @@
 <body>
 <h1> Registration in member </h1>
 
-<form action="#" th:action="@{'/members'}" th:object="${member}" th:method="post">
-    Seq : <input type="text" name="seq" th:field="*{seq}"/><br>
+<form action="#" th:action="@{'/members/'+${seq}}" th:object="${member}" th:method="put">
+    Seq : <input type="text" name="seq" th:field="*{seq}" th:value="*{seq}"readonly/><br>
     id(*) : <input type="text" name="id" th:field="*{id}"/><br>
     pw(*) : <input type="password" name="pw" th:field="*{pw}"/><br>
     name(*) : <input type="text" name="name" th:field="*{name}"/><br>
     email(*) : <input type="text" name="email" th:field="*{email}"/><br>
     phone : <input type="text" name="phone" th:field="*{phone}"/><br>
     address : <input type="text" name="address" th:field="*{address}"/><br>
-    <input type="submit" value="Register"/><input type="reset" value="Reset" />
+    <input type="submit" value="Update"/><input type="reset" value="Reset" />
 </form>
 <a th:href="@{'/members'}"> list </a>
 
