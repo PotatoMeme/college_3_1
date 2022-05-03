@@ -12,7 +12,9 @@
         <td><span th:text="${memo.memoText}"></span> </td>
     </tr>
 </table>
-
+<a th:href="@{'/memos/'+${memo.mno}+'/upform'}"> update </a>
+<a th:href="@{'/memos/'+${memo.mno}+'/delform'}"> delete </a>
+<a th:href="@{'/memos'}"> list </a>
 
 
 

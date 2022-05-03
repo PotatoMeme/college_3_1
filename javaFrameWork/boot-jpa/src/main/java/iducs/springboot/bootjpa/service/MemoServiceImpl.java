@@ -1,11 +1,14 @@
 package iducs.springboot.bootjpa.service;
 
 
+import iducs.springboot.bootjpa.domain.Member;
 import iducs.springboot.bootjpa.domain.Memo;
+import iducs.springboot.bootjpa.entity.MemberEntity;
 import iducs.springboot.bootjpa.entity.MemoEntity;
 import iducs.springboot.bootjpa.repository.MemoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,10 +40,31 @@ public class MemoServiceImpl implements MemoService{
         return memo;
 
     }
+    private MemoEntity dtoToEntity(Memo  memo){
+        MemoEntity entity = MemoEntity.builder()
+                .mno(memo.getMno())
+                .memoText(memo.getMemoText())
+                .build();
+        return entity;
+    }
+    private Memo entityToDto(MemoEntity entity){
+        Memo memo = Memo.builder()
+                .mno(entity.getMno())
+                .memoText(entity.getMemoText())
+                .build();
+
+        return  memo;
+    }
 
     @Override
     public List<Memo> readAll() {
-        return null;
+        List<Memo> memos = new ArrayList<Memo>();
+        List<MemoEntity> entities = memoRepository.findAll();
+        for (MemoEntity entity : entities) {
+            Memo memo = entityToDto(entity);
+            memos.add(memo);
+        }
+        return memos;
     }
 
     @Override
@@ -54,6 +78,7 @@ public class MemoServiceImpl implements MemoService{
 
     @Override
     public void delete(Memo memo) {
-
+        MemoEntity entity = dtoToEntity(memo);
+        memoRepository.deleteById(entity.getMno());
     }
 }

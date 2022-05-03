@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>members</title>
+</head>
+<body>
+<h1> Table in memos </h1>
+<table border="1" width="50%" height="50px">
+    <tr>
+        <td>mno</td>
+        <td>memoText</td>
+    </tr>
+    <tr th:each="memo : ${list}">
+        <td><a th:href="@{'/memos/'+${memo.mno}}"> <span th:text="${memo.mno}"></span></a></td>
+        <td><span th:text="${memo.memoText}"></span> </td>
+    </tr>
+</table>
+<a th:href="@{'/memos/regform'}"> register </a>
+
+
+
+
+
+</body>
+</html>

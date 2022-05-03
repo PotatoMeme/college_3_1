@@ -1,5 +1,6 @@
 package iducs.springboot.bootjpa.controller;
 
+import iducs.springboot.bootjpa.domain.Member;
 import iducs.springboot.bootjpa.domain.Memo;
 import iducs.springboot.bootjpa.service.MemoService;
 import org.springframework.stereotype.Controller;
@@ -34,10 +35,10 @@ public class MemoController {
     }
     @GetMapping("")
     public String getMemos(Model model) {
+        // 정보를 전달받을 객체를 보냄
         List<Memo> memos = memoService.readAll();
-        //List<MemoEntity> memos = memoService.findAll();
         model.addAttribute("list", memos);
-        return "/memos/home";
+        return "/memos/memos";
     }
     @GetMapping("/{idx}")
     public String getMemo(@PathVariable("idx") Long mno, Model model) {
@@ -57,6 +58,20 @@ public class MemoController {
         memoService.update(memo);
         model.addAttribute("memo", memo);
         return "/memos/memo";
+    }
+
+    @GetMapping("/{mno}/delform")
+    public String getDelform(@PathVariable("mno") Long mno,Model model) {
+        // 정보를 전달받을 객체를 보냄
+        Memo memo = memoService.readById(mno);
+        model.addAttribute("memo", memo);
+        return "/memos/delform";
+    }
+    @DeleteMapping("/{mno}")
+    public String delMember(@ModelAttribute("memo") Memo memo,Model model) {
+        // 정보를 전달받을 객체를 보냄
+        memoService.delete(memo);
+        return "redirect:/memos";
     }
 }
 
