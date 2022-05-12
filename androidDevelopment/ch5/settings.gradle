@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ch5"
 include ':app'
+include ':ch5_plus'

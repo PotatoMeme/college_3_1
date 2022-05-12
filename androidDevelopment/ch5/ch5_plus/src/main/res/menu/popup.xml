@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuSearch"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search" />
+    <item
+        android:id="@+id/menuAdd"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Add" />
+    <item
+        android:id="@+id/menuEdit"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Edit">
+        <menu>
+            <item
+                android:id="@+id/menuShare"
+                android:icon="@android:drawable/ic_menu_share"
+                android:title="Share" />
+        </menu>
+    </item>
+</menu>

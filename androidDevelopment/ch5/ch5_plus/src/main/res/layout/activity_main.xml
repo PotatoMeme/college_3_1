@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="show popup menu"
+        android:layout_gravity="center"
+        android:onClick="onClick"
+        />
+    <Button
+        android:id="@+id/btn_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="show alert dialog"
+        android:layout_gravity="center"
+        android:onClick="open"
+        />
+    <Button
+        android:id="@+id/btn_set_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="date setting"
+        android:layout_gravity="center"
+        android:onClick="setDate"
+        />
+    <Button
+        android:id="@+id/btn_set_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time settting"
+        android:layout_gravity="center"
+        android:onClick="setDate"
+        />
+    <Button
+        android:id="@+id/btn_search_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search data"
+        android:layout_gravity="center"
+        android:onClick="searchData"
+        />
+
+</LinearLayout>
