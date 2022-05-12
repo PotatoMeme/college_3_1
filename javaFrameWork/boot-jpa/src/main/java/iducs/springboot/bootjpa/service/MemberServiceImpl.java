@@ -2,15 +2,21 @@ package iducs.springboot.bootjpa.service;
 
 import iducs.springboot.bootjpa.domain.Member;
 import iducs.springboot.bootjpa.domain.Memo;
+import iducs.springboot.bootjpa.domain.PageRequestDTO;
+import iducs.springboot.bootjpa.domain.PageResultDTO;
 import iducs.springboot.bootjpa.entity.MemberEntity;
 import iducs.springboot.bootjpa.entity.MemberEntity;
 import iducs.springboot.bootjpa.repository.MemberRepository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -59,6 +65,16 @@ public class MemberServiceImpl implements MemberService{
             members.add(member);
         }
         return members;
+    }
+
+    @Override
+    public PageResultDTO<Member, MemberEntity> readListBy(PageRequestDTO pageRequestDTO) {
+        Pageable pageable = pageRequestDTO.getPageable(Sort.by("seq").descending());
+        // BooleanBuilder booleanBuilder = findByCondition(pageRequestDTO);
+        // Page<MemberEntity> result = memberRepository.findAll(booleanBuilder, pageable);
+        Page<MemberEntity> result = memberRepository.findAll(pageable);
+        Function<MemberEntity, Member> fn = (entity -> entityToDto(entity));
+        return new PageResultDTO<>(result, fn);
     }
 
     @Override

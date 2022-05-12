@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
+import java.util.Random;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -16,11 +17,17 @@ class BootJpaApplicationTests {
     MemberRepository memberRepository;
 
     @Test// Unit Test 통합테스트
-    void contextLoads() {
-        IntStream.rangeClosed(1,10).forEach(i->{
+    void testMemberInitialize() {
+        IntStream.rangeClosed(1,50).forEach(i->{
             MemberEntity member =
-                    MemberEntity.builder().id("id"+i).
-                            pw("pw"+i).name("name"+i).build();
+                    MemberEntity.builder()
+                            .id("id "+i)
+                            .pw("pw "+i)
+                            .name("name "+i)
+                            .email("email "+new Random().nextInt(100))
+                            .phone("phone "+new Random().nextInt(50))
+                            .address("address "+i)
+                            .build();
             memberRepository.save(member);
         });
     }

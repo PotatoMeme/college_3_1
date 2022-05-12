@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity // Spring Data JPA의 엔티티(entity, 개체)임을 나타냄
 @Table(name="tbl_memo")
-
+// 롬복 관련 어노테이션
 @ToString // toString() 생성
 @Getter  // getter() 생성
 @Setter // setter() 추가

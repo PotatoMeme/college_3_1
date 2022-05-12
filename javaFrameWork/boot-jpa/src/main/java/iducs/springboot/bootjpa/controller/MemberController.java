@@ -1,7 +1,8 @@
 package iducs.springboot.bootjpa.controller;
 
 import iducs.springboot.bootjpa.domain.Member;
-import iducs.springboot.bootjpa.domain.Memo;
+import iducs.springboot.bootjpa.domain.PageRequestDTO;
+import iducs.springboot.bootjpa.domain.PageResultDTO;
 import iducs.springboot.bootjpa.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,10 +36,11 @@ public class MemberController {
     }
 
     @GetMapping("")
-    public String getMemebers(Model model) {
+    public String getMemebers(PageRequestDTO pageRequestDTO, Model model) {
         // 정보를 전달받을 객체를 보냄
-        List<Member> members = memberService.readAll();
-        model.addAttribute("list", members);
+        //List<Member> members = memberService.readAll();
+        //model.addAttribute("list", members);
+        model.addAttribute("list", memberService.readListBy(pageRequestDTO));
         return "/members/members";
     }
     @GetMapping("/{seq}")
