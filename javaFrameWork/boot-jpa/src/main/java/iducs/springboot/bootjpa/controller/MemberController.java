@@ -25,6 +25,7 @@ public class MemberController {
     public String getRegform(Model model) {
         // 정보를 전달받을 객체를 보냄
         model.addAttribute("member", Member.builder().build());
+        //return "/members/regform";
         return "/members/regform";
     }
 

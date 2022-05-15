@@ -1,11 +1,7 @@
 package iducs.springboot.bootjpa.controller;
 
-import iducs.springboot.bootjpa.domain.Member;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -15,6 +11,10 @@ public class HomeController {
     @GetMapping("")
     public String getHome(){
         return "index";
+    }
+    @GetMapping("members/test")
+    public String getTest(){
+        return "upform";
     }
 }
 
