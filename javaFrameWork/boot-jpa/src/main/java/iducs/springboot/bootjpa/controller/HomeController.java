@@ -14,7 +14,7 @@ public class HomeController {
     }
     @GetMapping("members/test")
     public String getTest(){
-        return "upform";
+        return "members/simple";
     }
 }
 
