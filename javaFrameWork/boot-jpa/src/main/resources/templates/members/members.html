@@ -859,8 +859,8 @@
                   <form th:action="@{'/members'}" th:method="get">
                     <div class="input-group input-group-sm" style="width: 350px;">
                       <select class="form-control" name="sort">
-                        <option value=1> 오름차순 </option>
-                        <option value=2> 내림차순 </option>
+                        <option value=true> 오름차순 </option>
+                        <option value=false> 내림차순 </option>
                       </select>
                       <select class="form-control" name="type">
                         <option value=""> 선택 </option>
@@ -911,18 +911,18 @@
                   <ul class="pagination justify-content-center m-0">
                     <li class="page-item" th:if="${list.prevPage}">
                       <a class="page-link" th:href="@{/members(page=${list.startPage - 1},
-                        sorter=${pageRequestDTO.sorter},type=${pageRequestDTO.type},keyword=${pageRequestDTO.keyword})}">Prev</a>
+                        sorter=${pageRequestDTO.sort},type=${pageRequestDTO.type},keyword=${pageRequestDTO.keyword})}">Prev</a>
                     </li>
 
                     <li th:class="'page-item' + ${list.currentPage == page? ' active':''}"
                         th:each="page : ${list.pageList}">
                       <a class="page-link" th:href="@{/members(page=${page},
-                        sorter=${pageRequestDTO.sorter},type=${pageRequestDTO.type},keyword=${pageRequestDTO.keyword})}">[[${page}]]</a>
+                        sorter=${pageRequestDTO.sort},type=${pageRequestDTO.type},keyword=${pageRequestDTO.keyword})}">[[${page}]]</a>
                     </li>
 
                     <li class="page-item" th:if="${list.nextPage}">
                       <a class="page-link" th:href="@{/members(page=${list.endPage + 1},
-                        sorter=${pageRequestDTO.sorter},type=${pageRequestDTO.type},keyword=${pageRequestDTO.keyword})}">Next</a>
+                        sorter=${pageRequestDTO.sort},type=${pageRequestDTO.type},keyword=${pageRequestDTO.keyword})}">Next</a>
                     </li>
                   </ul>
 

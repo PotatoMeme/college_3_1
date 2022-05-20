@@ -12,6 +12,7 @@ import iducs.springboot.bootjpa.entity.QMemberEntity;
 
 import iducs.springboot.bootjpa.repository.MemberRepository;
 
+import lombok.extern.java.Log;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -74,7 +75,10 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public PageResultDTO<Member, MemberEntity> readListBy(PageRequestDTO pageRequestDTO) {
         Pageable pageable;
-        if(pageRequestDTO.getSort() == 1){
+        System.out.println(pageRequestDTO.getSort());
+        if(pageRequestDTO.getSort()==null){
+            pageable = pageRequestDTO.getPageable(Sort.by("seq").ascending());
+        }else if(pageRequestDTO.getSort()){
             pageable = pageRequestDTO.getPageable(Sort.by("seq").descending());
         }else{
             pageable = pageRequestDTO.getPageable(Sort.by("seq").ascending());
