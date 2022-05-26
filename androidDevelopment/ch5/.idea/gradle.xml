@@ -11,8 +11,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/ch5_notifiation" />
             <option value="$PROJECT_DIR$/ch5_plus" />
             <option value="$PROJECT_DIR$/ch5_reactive" />
+            <option value="$PROJECT_DIR$/ch5_reservation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

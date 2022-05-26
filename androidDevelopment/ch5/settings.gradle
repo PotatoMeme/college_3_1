@@ -10,3 +10,5 @@ rootProject.name = "ch5"
 include ':app'
 include ':ch5_plus'
 include ':ch5_reactive'
+include ':ch5_notifiation'
+include ':ch5_reservation'

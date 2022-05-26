@@ -2,7 +2,9 @@ package com.induk.ch5_reactive;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -13,7 +15,7 @@ import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class MainActivity3 extends AppCompatActivity {
+public class MainActivity3 extends AppCompatActivity implements View.OnClickListener {
     private EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class MainActivity3 extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
         editText = findViewById(R.id.edtLog);
         startRX();
+        findViewById(R.id.btn_next_act).setOnClickListener(this);
     }
 
     private void startRX() {
@@ -50,5 +53,10 @@ public class MainActivity3 extends AppCompatActivity {
                      }
         );
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        startActivity(new Intent(this,MainActivity4.class));
     }
 }

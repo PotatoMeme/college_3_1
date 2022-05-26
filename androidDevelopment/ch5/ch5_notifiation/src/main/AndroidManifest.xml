@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.induk.ch5_reactive">
+    package="com.induk.ch5_notifiation">
 
     <application
         android:allowBackup="true"
@@ -9,15 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ch5">
-        <activity
-            android:name=".MainActivity4"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity3"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
