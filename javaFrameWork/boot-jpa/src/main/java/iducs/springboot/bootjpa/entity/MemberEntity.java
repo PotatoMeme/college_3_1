@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor // 모든 매개변수를 갖는 생성자
 @NoArgsConstructor  // 디폴트 생성자(아무런 매개변수가 없는)
-public class MemberEntity {
+public class MemberEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // MySQL, MariaDB Auto Increment
     private Long seq;

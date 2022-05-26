@@ -1,0 +1,13 @@
+
+---------------------------------------------------------------------------------------------------------------
+1. 데이터베이스에 데이블 생서을 위한 entity 객체정의
+2. entity 객체들간의 관계를 고려하여  domain 객체(dto 객체) 정의
+3. entity 객체를 활용하여 실제로 데이터베이스 접근(CRUD 연산등)을 수행하는 repository 객체 정의(@Repository)
+4. service 인터페이스와 service 구현체를 정의(@Service)
+5. 요청의 흐름을 고려하여  URI 에 매핑하는 controller객체 정의(메소드 지정)(@Controller)
+6.1. 요청의 흐름을 고려하여 view 처리  - html템플릿(템플릿 엔진 포함) 수저
+6.2. 요청의 흐흠을 고려하여 자려전(rest api 방식)
+---------------------------------------------------------------------------------------------------------------
+
+Controller --> DTO/Domain -->  servie --> Entity --> Repository --> DBMS
+Controller <-- DTO/Domain <--  servie <-- Entity <-- Repository <-- DBMS
