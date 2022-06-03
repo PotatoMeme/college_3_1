@@ -19,7 +19,16 @@ public class BoardEntity extends BaseEntity{
     private String title;
     private String content;
 
-    @ManyToOne//n:1로 조인
+    @ManyToOne(fetch = FetchType.LAZY)// 메로리적재를 나중에 하겠다고 공지 (=지연 로딩)
+    //@ManyToOne//n:1로 조인
+    //fetch l
     private MemberEntity writer;
+
+    public void changeTitle(String title){
+        this.title = title;
+    }
+    public void changeContent(String content){
+        this.content = content;
+    }
 }
 

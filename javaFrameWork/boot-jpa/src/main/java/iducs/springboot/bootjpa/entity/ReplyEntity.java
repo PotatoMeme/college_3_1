@@ -20,6 +20,6 @@ public class ReplyEntity extends BaseEntity{
     private String text;
     private String replier;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private BoardEntity board;
 }

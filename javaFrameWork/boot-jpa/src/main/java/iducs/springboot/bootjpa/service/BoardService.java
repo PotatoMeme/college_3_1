@@ -10,18 +10,22 @@ public interface BoardService {
     Long register(Board dto);
     PageResultDTO<Board,Object[]> getList(PageRequestDTO pageRequestDTO);
 
+    Board getById(Long bno);
+    Long modify(Board dto);
+    void deleteWithRepliesById(Long bno);
+
     default BoardEntity dtoToEntity(Board dto){
         MemberEntity member = MemberEntity.builder()
                 .seq(dto.getWriterSeq())
                 .build();
 
-        BoardEntity board = BoardEntity.builder()
+        BoardEntity boardEntity = BoardEntity.builder()
                 .bno(dto.getBno())
                 .title(dto.getTitle())
                 .content(dto.getContent())
                 .writer(member)
                 .build();
-        return board;
+        return boardEntity;
     }
     default Board entityToDto(BoardEntity entity,MemberEntity member, Long replyCount){
         Board dto = Board.builder()
