@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fruits">
+        <item>Apple01</item>
+        <item>Apple02</item>
+        <item>Apple03</item>
+        <item>Apple04</item>
+        <item>Apple05</item>
+        <item>Apple06</item>
+        <item>Apple07</item>
+        <item>Apple08</item>
+        <item>Apple09</item>
+        <item>Apple10</item>
+        <item>Apple11</item>
+        <item>Apple12</item>
+        <item>Apple13</item>
+        <item>Apple14</item>
+        <item>Apple15</item>
+        <item>Apple16</item>
+    </string-array>
+</resources>

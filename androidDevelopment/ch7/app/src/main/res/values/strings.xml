@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ch7</string>
+    <string name="toast_format">item: %s | position: %d | id: %d</string>
+
+</resources>

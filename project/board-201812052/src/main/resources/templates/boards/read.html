@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Project Detail</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <div th:replace="~{/nav :: navfrag}" />
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Board Detail</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Board Detail</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Board Detail</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+              <div class="row">
+
+                <div class="col-12 col-sm-6">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Total Reply</span>
+                      <span class="info-box-number text-center text-muted mb-0">[[ ${dto.replyCount} ]]</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Total Views</span>
+                      <span class="info-box-number text-center text-muted mb-0">[[ ${dto.views} ]]</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+
+                    <div class="post" th:if="${session.login != null}">
+                      <h4>Reply</h4>
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                        <span class="username">
+                          <a href="#"> [[ ${session.login.id} ]]</a>
+                        </span>
+                      </div>
+                      <!-- /.user-block -->
+                      <form th:action="@{'/replies/'+${dto.bno}}" th:object="${reg}" th:method="post">
+
+                        <textarea class="form-control" th:field="*{text}" id="exampleFormControlTextarea1" rows="3"/>
+                        <br>
+                        <div class="col-12">
+                          <input type="submit" value="post reply" class="btn btn-dark float-right"/>
+                        </div>
+                      </form>
+                      <br><br>
+
+                    </div>
+
+                  <h4>Recent Replies</h4>
+                    <div class="post" th:each="reply : ${replies}">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                        <span class="username">
+                          <a href="#"> [[ ${reply.writerId} ]]</a>
+                        </span>
+                        <span class="description">등록 : [[ ${reply.regDate} ]]</span>
+                        <span class="description">수정 : [[ ${reply.modDate} ]]</span>
+                      </div>
+                      <!-- /.user-block -->
+                      <p>
+                        [[ ${reply.text} ]]
+                      </p>
+                      <br>
+                      <div class="row" th:if="${session.login != null}">
+                        <div th:if="${session.login.seq == reply.writerSeq} or ${session.isadmin != null}">
+                          <a th:href="@{'/replies/'+${reply.rno}+'/upform'}"
+                             class="btn btn-sm btn-primary">
+                            <i class="fas fa-pen"></i> Edit
+                          </a>
+                          <a th:href="@{'/replies/'+${reply.rno}+'/delform'}"
+                             class="btn btn-sm bg-red" >
+                            <i class="fas fa-ban"></i> Delete
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+
+                <h3 class="text-primary"><i class="fas fa-paint-brush"></i> [[ ${dto.title} ]]</h3>
+
+
+              <p class="text-muted">
+                [[ ${dto.content} ]]
+              </p>
+              <br>
+              <div class="text-muted">
+                <p class="text-sm">Writer
+                  <b class="d-block">[[ ${dto.writerEmail} ]]</b>
+                </p>
+              </div>
+              <div class="row" th:if="${session.login != null}">
+                <div th:if="${session.login.seq == dto.writerSeq} or ${session.isadmin != null}">
+                  <a th:href="@{'/boards/'+${dto.bno}+'/upform'}"
+                     class="btn btn-sm btn-primary" >
+                    <i class="fas fa-pen"></i> Edit
+                  </a>
+                  <a th:href="@{'/boards/'+${dto.bno}+'/ban'}"
+                     class="btn btn-sm bg-red" th:if="${dto.ban == false} and ${session.isadmin != null}">
+                     ban
+                  </a>
+                  <a th:href="@{'/boards/'+${dto.bno}+'/unlock'}"
+                     class="btn btn-sm btn-primary" th:if="${dto.ban == true} and ${session.isadmin != null}">
+                     unlock
+                  </a>
+                  <a th:href="@{'/boards/'+${dto.bno}+'/delform'}"
+                     class="btn btn-sm bg-red">
+                    <i class="fas fa-ban"></i> Delete
+                  </a>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.2.0
+    </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+</body>
+</html>
