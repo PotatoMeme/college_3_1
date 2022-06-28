@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">tiger</string>
+    <string name="app_content_1">컨텍스트 메뉴를 이용하여 도형그리기</string>
+    <string name="app_content_2">개</string>
+    <string name="err_msg">도형이 선택되어있지 않습니다.\n컨텍스트메뉴를 이용하여 도형을 선택해주세요.</string>
+</resources>
